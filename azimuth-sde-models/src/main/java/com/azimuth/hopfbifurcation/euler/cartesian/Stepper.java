@@ -38,14 +38,14 @@ public class Stepper
 	 */
 	private INormalDevRandom normdev;
 	
-	public Stepper(IForce2DCartesian pForce, Point2D pStartingPosition, double pStepSize, double pDiffusionConstant)
+	public Stepper(IForce2DCartesian pForce, Point2D pStartingPosition, double pStepSize, double pDiffusionConstant, int pSeed)
 	{
 		currentPosition = pStartingPosition;
 		force = pForce;
 		step = pStepSize;
 		diffusionConstant = pDiffusionConstant;
 		
-		IUniformRandom uniformRandom = new Ran(1);
+		IUniformRandom uniformRandom = new Ran(pSeed);
 		normdev = new Normaldev(0.0, Math.sqrt(pStepSize), uniformRandom);
 	}
 	

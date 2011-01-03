@@ -15,7 +15,7 @@ import com.azimuth.geometry.Point2D;
  * @author Tim van Beek
  * 
  */
-public class Runner
+public class HopfRunner
 {
 
 	/**
@@ -47,14 +47,14 @@ public class Runner
 
 			// model parameters:
 			double omega = 1.0;
-			double beta = 0.0;
+			double beta = -0.25;
 			double betaConst = 0;
 			double xStart = 0.0;
 			double yStart = 2.0;
 
 			double stepSize = 0.001;
 
-			double diffusionConstant = 0.3;
+			double diffusionConstant = 0.0;
 
 			String headline = "# omega: " + omega + "\n";
 			headline = headline + "# beta: " + beta + "\n";
@@ -62,7 +62,7 @@ public class Runner
 			headline = headline + "# diffusionConstant: " + diffusionConstant
 					+ "\n";
 			headline = headline + "# yStart: " + yStart + "\n";
-			headline = headline + "# yStart: " + yStart + "\n";
+			headline = headline + "# xStart: " + xStart + "\n";
 			headline = headline + "# stepSize: " + stepSize + "\n";
 
 			out.write(headline);
@@ -71,47 +71,30 @@ public class Runner
 
 			// for different noise strengths change the last parameter of the
 			// constructor
+			
+			
+			
 			Point2D startingPoint = new Point2D(xStart, yStart);
 
 			Stepper stepper = new Stepper(force, startingPoint, stepSize,
-					diffusionConstant);
+					diffusionConstant, 1);
 
 			
 			double h = 0.0;
 			
-			for (int index = 0; index < 10000; index++)
+			for (int index = 0; index < 40000; index++)
 			{
 
 				Point2D currentPosition = stepper.performStep();
 
 				out.write(h + " " + currentPosition.x + " " + currentPosition.y);
+				
+				//out.write(currentPosition.x + " " + currentPosition.y);
+				
 				out.write("\n");
 				
 				h += stepSize;
-			}
-			
-
-			/*
-			startingPoint = new Point2D(0.01, 0.01);
-
-			headline = headline + "# yStart: " + startingPoint.x + "\n";
-			headline = headline + "# yStart: " + startingPoint.y + "\n";
-
-			out.write(headline);
-
-			
-			stepper = new Stepper(force, startingPoint, stepSize,
-					diffusionConstant);
-
-			for (int index = 0; index < 10000; index++)
-			{
-
-				Point2D currentPosition = stepper.performStep();
-
-				out.write(currentPosition.x + " " + currentPosition.y);
-				out.write("\n");
-			}
-			*/
+			}			
 
 			out.close();
 
