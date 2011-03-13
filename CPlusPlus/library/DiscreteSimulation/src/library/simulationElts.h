@@ -1,6 +1,16 @@
 #ifndef __PARAMETER_BLOCK_H__
 #define __PARAMETER_BLOCK_H__
 
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the Lesser GNU General Public License as published by
+// the Free Software Foundation; either version 3 of the License, or (at
+// your option) any later version.
+//  
+// This program is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+
 #include "simd.h"
 #include "randomVariables.h"
 #include "histogram.h"
@@ -193,7 +203,6 @@ MAKE_FN(orV,_mm_or_ps)
 
 //--------------------------------- useful multi-step operators ----------------------------------------
 
-#if 0
 template<typename T,typename U>
 inline
 LL_SIMD
@@ -209,7 +218,7 @@ ifelse(const T &pred,const U &trueV,const V &falseV)
 {
     return orV(andV(trueV,pred),andNotV(falseV,pred));
 }
-#endif
+
 }//AzDiscreteSim
 
 #endif /*__PARAMETER_BLOCK_H__*/
