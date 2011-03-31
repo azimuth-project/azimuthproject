@@ -41,7 +41,29 @@ class Complex(val re: Double, val im: Double)
 
   def toPolar = (radius, theta)
 
-  private def radius = scala.Math.sqrt(re*re + im*im)
+
+  private def radius =
+  {
+      // the problem with the naive implementation
+      // scala.Math.sqrt(re*re + im*im)
+      // is that it will lead to an unnecessary overflow
+      // if either re or im is bigger than the square root of the
+      // maximum double number.
+      // This can be avoided by a slight reformulation.
+      val reAbs = Math.abs(re);
+      val imAbs = Math.abs(im);
+
+      if(reAbs > imAbs)
+      {
+           reAbs*Math.sqrt(1+(im/re)*(im/re))
+      }
+      else
+      {
+           imAbs*Math.sqrt(1+(re/im)*(re/im))
+      }
+  }
+
+
   private def theta = scala.Math.atan2(re, im)
 
   override def toString =
