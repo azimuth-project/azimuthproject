@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Stochastic resonance</title>
+    <link rel="stylesheet" href="http://jsxgraph.uni-bayreuth.de/distrib/jsxgraph.css" />
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.93/jsxgraphcore.js"></script>
+    <script src="./js/sr-bistable.js"></script>
+</head>
+
+<body onload="initCharts('sr-box', 'control-box')">
+    <h1>Stochastic resonance example</h1>
+    
+    <p>
+    This is an interactive example to complement Tim van Beek's explanation of the
+    <a href="http://www.azimuthproject.org/azimuth/show/Stochastic+resonance">stochastic resonance effect</a>.    
+    </p>
+    
+    <div id="sr-charts" style="position:relative; width:800px;">
+        <div id="sr-box" class="jxgbox" style="width:800px; height:500px;"></div>
+        <div id="control-box" class="jxgbox" style="width:600px; height:150px; position:absolute; top:515px; left:100px;"></div>
+    </div>
+</body>
+
+</html>
